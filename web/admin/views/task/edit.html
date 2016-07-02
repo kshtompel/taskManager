@@ -1,0 +1,13 @@
+<breadrcumb>
+    <li><a ui-sref="product.search">Task list</a></li>
+    <li>{{ task.name }}</li>
+    <li>Edit</li>
+</breadrcumb>
+
+<page-header>Edit Task</page-header>
+
+<div class="row">
+    <form class="form-horizontal" ng-submit="save()">
+        <task-form></task-form>
+    </form>
+</div>

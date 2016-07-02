@@ -1,0 +1,11 @@
+api:
+    resource: .
+    type: app
+
+admin:
+    path: /
+    defaults: { _controller: 'controller.admin:index' }
+
+_admin:
+    resource: '@AdminBundle/Resources/config/routing.yml'
+    prefix: /

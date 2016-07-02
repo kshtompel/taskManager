@@ -1,0 +1,121 @@
+<breadrcumb>
+    <li><a ui-sref="task.list">Tasks</a></li>
+    <li>List</li>
+</breadrcumb>
+
+<page-header>
+    Tasks
+
+    <div class="pull-right">
+        <a class="btn btn-success" ui-sref="task.create">
+            <i class="fa fa-plus"></i>
+            Create
+        </a>
+    </div>
+</page-header>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+            <tr class="text-center">
+                <th>Name</th>
+                <th>Description</th>
+                <th>created</th>
+                <th>Start</th>
+                <th>Finish</th>
+                <th>Status</th>
+                <th>Expired</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="task in pagination.paged" class="text-center" ng-class="{'warning': product.isRemoved()}">
+                <td>
+                    {{ task.name }}
+                </td>
+
+                <td>
+                    {{ task.description }}
+                </td>
+
+                <td>
+                    <div class="datetime">
+                        <div class="date">{{ task.createdAt|date:'MMM dd, yyyy'}}</div>
+                        <div class="time">{{ task.createdAt|date:'HH:mm'}}</div>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="datetime">
+                        <div class="date">{{ task.startedAt|date:'MMM dd, yyyy'}}</div>
+                        <div class="time">{{ task.startedAt|date:'HH:mm'}}</div>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="datetime">
+                        <div class="date">{{ task.finishedAt|date:'MMM dd, yyyy'}}</div>
+                        <div class="time">{{ task.finishedAt|date:'HH:mm'}}</div>
+                    </div>
+                </td>
+
+                <td>
+                    <div ng-switch on="task.status">
+                        <span ng-switch-when="1">New</span>
+                        <span ng-switch-when="2">Pending</span>
+                        <span ng-switch-when="3">Finished</span>
+                    </div>
+                </td>
+
+                <td>
+                    {{ task.expired ? 'Yes' : 'No' }}
+                </td>
+
+                <td>
+                    <div class="btn-group">
+                       <button type="button" class="btn btn-default dropdown-toggle center-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <i ng-if="product.processed" class="fa fa-spinner fa-spin"></i>
+                           Actions
+                           <span class="caret"></span>
+                       </button>
+
+                       <ul class="dropdown-menu dropdown-menu-right" menu-list-separator>
+
+                           <li>
+                               <a ui-sref="task.edit({task: task.id})">
+                                   <i class="fa fa-edit fa-fw"></i>
+                                   Edit
+                               </a>
+                           </li>
+
+                           <li role="separator" class="divider"></li>
+
+                           <li>
+                               <a ng-click="openModalForRemove(task)" class="text-danger">
+                                   <span class="text-danger">
+                                       <i class="fa fa-trash fa-fw"></i>
+                                       Remove
+                                   </span>
+                               </a>
+                           </li>
+                       </ul>
+                   </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <uib-pagination
+                    ng-change="changePage()"
+                    total-items="pagination.total"
+                    items-per-page="pagination.limit"
+                    ng-model="pagination.page"
+                    max-size="7"
+                    class="pagination-sm"
+                    boundary-links="true"
+            ></uib-pagination>
+        </div>
+    </div>
+</div>

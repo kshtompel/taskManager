@@ -1,0 +1,21 @@
+services:
+    controller.admin:
+        class: AdminBundle\Controller\AdminController
+        arguments:
+          - '@twig'
+          - '@server_data.json'
+          - '@doctrine.orm.default_entity_manager'
+          - '@validator'
+          - '@jms_serializer'
+
+    admin.action.task.manager:
+        class: AdminBundle\Api\TasksApi
+        arguments:
+            - '@twig'
+            - '@server_data.json'
+            - '@doctrine.orm.default_entity_manager'
+            - '@validator'
+            - '@jms_serializer'
+            - '@request_stack'
+        tags:
+            - { name: app.action, server: admin }

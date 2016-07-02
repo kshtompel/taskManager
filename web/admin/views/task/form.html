@@ -1,0 +1,73 @@
+<div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Task name:</label>
+
+        <div class="col-md-10" ng-class="{'has-error': task.errors.name}">
+            <input class="form-control" type="text" name="name" ng-model="task.name" placeholder="Please enter a task name..." value="" autofocus autocomplete="off" ng-disabled="task.processed" />
+
+            <p class="help-block">Please enter task name.</p>
+            <p class="text-danger help-block" ng-if="task.errors.name">{{ task.errors.name }}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Task description:</label>
+
+        <div class="col-md-10" ng-class="{'has-error': task.errors.description}">
+            <textarea class="form-control" name="description" ng-model="task.description" cols="30" rows="10" ng-disabled="task.processed"></textarea>
+
+            <p class="help-block">Please enter task description.</p>
+            <p class="text-danger help-block" ng-if="task.errors.description">{{ task.errors.description }}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Task start date:</label>
+
+        <div class="col-md-10" ng-class="{'has-error': task.errors.startedAt}">
+            <input class="form-control" type="date" name="startedAt" ng-model="task.startedAt" value="" ng-disabled="task.processed" />
+
+            <p class="help-block">Please enter task start date.</p>
+            <p class="text-danger help-block" ng-if="task.errors.startedAt">{{ task.errors.startedAt }}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 control-label">Task finish date:</label>
+
+        <div class="col-md-10" ng-class="{'has-error': task.errors.finishedAt}">
+            <input class="form-control" type="date" name="finishedAt" ng-model="task.finishedAt" value="" ng-disabled="task.processed" />
+
+            <p class="help-block">Please enter task finish date.</p>
+            <p class="text-danger help-block" ng-if="task.errors.finishedAt">{{ task.errors.finishedAt }}</p>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="task.id">
+        <label class="col-md-2 control-label">Task status:</label>
+
+        <div class="col-md-10" ng-class="{'has-error': task.errors.status}">
+            <label>
+                <input type="radio" ng-model="task.status" value="1" ng-disabled="task.processed">
+                New
+            </label>
+            <label>
+                <input type="radio" ng-model="task.status" value="2" ng-disabled="task.processed">
+                Pending
+            </label>
+            <label>
+                <input type="radio" ng-model="task.status" value="3" ng-disabled="task.processed">
+                Finished
+            </label>
+
+            <p class="help-block">Please set task status.</p>
+            <p class="text-danger help-block" ng-if="task.errors.status">{{ task.errors.status }}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="text-center">
+            <button type="submit" class="btn btn-success" ng-disabled="task.processed">
+                <i class="fa fa-spinner fa-spin" ng-if="task.processed"></i>
+                Save
+            </button>
+        </div>
+    </div>
+</div>

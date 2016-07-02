@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="438807392">
+    <data-source source="LOCAL" name="PostgreSQL - task_manager@127.0.0.1" uuid="fc6af049-6dda-4e73-89d3-7500d63b70e7">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/task_manager</jdbc-url>
+    </data-source>
+  </component>
+</project>

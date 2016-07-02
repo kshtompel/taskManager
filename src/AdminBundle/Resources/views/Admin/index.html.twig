@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"
+      ng-app="TaskManager">
+<head>
+    <meta charset="UTF-8">
+    <title>{% verbatim %}{{ title }}{% endverbatim %}</title>
+    <script type="text/javascript" src="/components/moment/moment.js"></script>
+    <script type="text/javascript" src="/components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/components/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/components/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="/components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="/components/select2/dist/js/select2.min.js"></script>
+    <script type="text/javascript" src="/components/holderjs/holder.min.js"></script>
+
+    <script type="text/javascript" src="/components/angular/angular.js"></script>
+    <script type="text/javascript" src="/components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="/components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="/components/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="/components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script type="text/javascript" src="/components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="/components/angular-loading-bar/src/loading-bar.js"></script>
+    <script type="text/javascript" src="/components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+    <script type="text/javascript" src="/components/angular-xeditable/dist/js/xeditable.min.js"></script>
+    <script type="text/javascript" src="/components/angular-ui-select/dist/select.min.js"></script>
+    <script type="text/javascript" src="/components/angular-bootstrap-switch/dist/angular-bootstrap-switch.js"></script>
+    <script type="text/javascript" src="/components/angular-ui-bootstrap-datetimepicker/datetimepicker.js"></script>
+    <script type="text/javascript" src="/components/ngstorage/ngStorage.min.js"></script>
+    <script type="text/javascript" src="/components/angular-hotkeys/build/hotkeys.min.js"></script>
+    <script type="text/javascript" src="/components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar.min.js"></script>
+    <script type="text/javascript" src="/components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
+    <script type="text/javascript" src="/components/jQuery-File-Upload/js/jquery.fileupload.js"></script>
+    <script type="text/javascript" src="/components/jQuery-File-Upload/js/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="/components/jQuery-File-Upload/js/jquery.fileupload-process.js"></script>
+    <script type="text/javascript" src="/components/jQuery-File-Upload/js/jquery.fileupload-angular.js"></script>
+
+    {% javascripts output='/js/admin.min.js'
+    '%kernel.web_dir%/admin/app/model/task.js'
+    '%kernel.web_dir%/admin/app/controllers/dashboard.js'
+    '%kernel.web_dir%/admin/app/controllers/tasks.js'
+    '%kernel.web_dir%/admin/app/controllers/controllers.js'
+    '%kernel.web_dir%/admin/app/app.js'
+
+    '%kernel.web_dir%/admin/app/directives/breadcrumb/breadcrumb.js'
+    '%kernel.web_dir%/admin/app/directives/header/header.js'
+    '%kernel.web_dir%/admin/app/directives/page-header/page-header.js'
+    '%kernel.web_dir%/admin/app/directives/page-title/page-title.js'
+    '%kernel.web_dir%/admin/app/directives/sidebar/sidebar.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url|replace({'//js': '/js'}) }}"></script>
+    {% endjavascripts %}
+
+    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="/components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css" />
+    <link rel="stylesheet" href="/components/bootstrap-daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="/components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/components/angular-xeditable/dist/css/xeditable.css" />
+    <link rel="stylesheet" href="/components/angular-loading-bar/build/loading-bar.min.css" />
+    <link rel="stylesheet" href="/components/angular-ui-select/dist/select.min.css" />
+    <link rel="stylesheet" href="/components/angular-ui-notification/dist/angular-ui-notification.min.css" />
+    <link rel="stylesheet" href="/components/angular-hotkeys/build/hotkeys.min.css" />
+    <link rel="stylesheet" href="/components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" />
+    <link rel="stylesheet" href="/admin/css/main.css" />
+    <link rel="stylesheet" href="/admin/css/vertical-tabs.css" />
+</head>
+<body>
+<div id="app-container" ui-view></div>
+</body>
+</html>

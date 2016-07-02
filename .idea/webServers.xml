@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="118e5d6d-b0f7-4c31-8821-dac179689a7d" name="Task Manager" url="http://192.168.56.152">
+        <fileTransfer host="192.168.56.152" port="22" accessType="SFTP" password="df9bdf98df99df9edf9f" username="ozaitsev">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="c0ca6dd5-af2e-4572-b39d-4976e898206c" name="Task manager" url="http://taskmanager.dev/">
+        <fileTransfer host="127.0.0.1" port="2222" accessType="SFTP" password="dfdcdfcbdfcddfd8dfcbdfc4dfde" username="vagrant">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="2222" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

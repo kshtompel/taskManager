@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="PostgreSQL - task_manager@127.0.0.1" uuid="fc6af049-6dda-4e73-89d3-7500d63b70e7">
+    <database-info product="PostgreSQL" version="9.2.15" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="POSTGRES" format-version="2.5">
+      <database id="1" name="task_manager"/>
+      <schema id="2" parent="1" name="public">
+        <object-id>2200</object-id>
+        <comment>standard public schema</comment>
+        <introspection-state-number>2228</introspection-state-number>
+        <introspection-timestamp>2016-06-29.19:40:06.139</introspection-timestamp>
+      </schema>
+      <table id="3" parent="2" name="tasks">
+        <object-id>25504</object-id>
+        <state-number>2226</state-number>
+      </table>
+      <column id="4" parent="3" name="id">
+        <state-number>2226</state-number>
+        <mandatory>1</mandatory>
+        <data-type>uuid</data-type>
+      </column>
+      <column id="5" parent="3" name="name">
+        <state-number>2226</state-number>
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="6" parent="3" name="description">
+        <state-number>2226</state-number>
+        <data-type>varchar(512)</data-type>
+        <default-expression>NULL::character varying</default-expression>
+      </column>
+      <column id="7" parent="3" name="status">
+        <state-number>2226</state-number>
+        <mandatory>1</mandatory>
+        <data-type>smallint</data-type>
+      </column>
+      <column id="8" parent="3" name="created_at">
+        <state-number>2226</state-number>
+        <mandatory>1</mandatory>
+        <data-type>timestamp(0)</data-type>
+      </column>
+      <column id="9" parent="3" name="started_at">
+        <state-number>2226</state-number>
+        <mandatory>1</mandatory>
+        <data-type>timestamp(0)</data-type>
+      </column>
+      <column id="10" parent="3" name="finished_at">
+        <state-number>2226</state-number>
+        <mandatory>1</mandatory>
+        <data-type>timestamp(0)</data-type>
+      </column>
+      <index id="11" parent="3" name="tasks_pkey">
+        <object-id>25511</object-id>
+        <columns>id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="12" parent="3" name="tasks_pkey">
+        <columns>id</columns>
+        <underlying-index>tasks_pkey</underlying-index>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

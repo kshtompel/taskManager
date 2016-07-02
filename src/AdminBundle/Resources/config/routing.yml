@@ -1,0 +1,25 @@
+task_list:
+    path:     /task/list
+    defaults: { _controller: controller.admin:taskList }
+    methods: [ POST ]
+
+task_create:
+    path:     /task/create
+    defaults: { _controller: controller.admin:taskCreate }
+    methods: [ POST ]
+
+task_view:
+    path:     /task
+    defaults: { _controller: controller.admin:taskView }
+    methods: [ POST ]
+
+task_edit:
+    path:     /task/edit
+    defaults: { _controller: controller.admin:taskEdit }
+    methods: [ POST ]
+
+
+task_remove:
+    path:     /task/remove
+    defaults: { _controller: controller.admin:taskRemove }
+    methods: [ POST ]

@@ -1,0 +1,99 @@
+services:
+    server_data.json:
+        class: AppBundle\ServersHandle\Servers\JsonServerData
+        arguments:
+            - '@twig'
+            - '@doctrine.orm.default_entity_manager'
+            - '@validator'
+            - '@jms_serializer'
+
+    app.routing_loader:
+        class: AppBundle\Routing\AppLoader
+        tags:
+            - { name: routing.loader }
+
+    app.server_registry:
+        class: AppBundle\Registry\ServerRegistry
+        arguments: [ '@service_container' ]
+
+    controller.app:
+        class: AppBundle\Controller\AppController
+        arguments: [ '@app.server_registry' ]
+
+    cache.factory:
+        class: AppBundle\Cache\CacheFactory
+        arguments: [ '%kernel.debug%' ]
+#        arguments: [ '@=service("redis.registry").get("cache")', '%kernel.debug%' ]
+
+    cache:
+        class: AppBundle\Cache\ArrayCache
+        factory: [ '@cache.factory', 'create' ]
+
+    # Object Mapper
+    object_mapper.loader.annotated:
+        class: AppBundle\ServersHandle\ObjectMapper\AnnotationLoader
+        public: false
+        arguments: [ '@annotation_reader' ]
+
+    object_mapper.loader:
+        class: AppBundle\ServersHandle\ObjectMapper\Metadata\ChainLoader
+        public: false
+        calls:
+            - ['addLoader', [ '@object_mapper.loader.annotated' ]]
+    object_mapper.metadata_factory:
+        class: AppBundle\ServersHandle\ObjectMapper\MetadataFactory
+        public: false
+        arguments: [ '@object_mapper.loader' ]
+
+    object_mapper.cached_metadata_factory:
+        class: AppBundle\ServersHandle\ObjectMapper\Metadata\CachedMetadataFactory
+        public: false
+        arguments: [ '@object_mapper.metadata_factory', '@cache' ]
+
+    object_mapper.strategy.reflection:
+        class: AppBundle\ServersHandle\ObjectMapper\ReflectionStrategy
+        public: false
+
+    object_mapper.strategy_registry:
+        class: AppBundle\ServersHandle\ObjectMapper\StrategyRegistry
+        public: false
+        calls:
+            - ['add', ['reflection', '@object_mapper.strategy.reflection']]
+
+    object_mapper:
+        class: AppBundle\ServersHandle\ObjectMapper\ObjectMapper
+        arguments: [ '@object_mapper.cached_metadata_factory', '@object_mapper.strategy_registry' ]
+
+    # Abstract services for build API handler and services
+    app.action.resolver.service.abstract:
+        class: AppBundle\ServersHandle\Service\ServiceResolver
+        abstract: true
+        public: false
+        arguments: [ '@service_container' ]
+
+    app.object_mapper_and_resolver_extractor.abstract:
+        class: AppBundle\ServersHandle\ObjectMapper\ObjectMapperParameterResolverAndExtractor
+        abstract: true
+        public: false
+        arguments: [ '@object_mapper', '@validator', '@logger', %kernel.debug% ]
+        tags:
+            - { name: monolog.logger, channel: api }
+
+    app.handler_builder.abstract:
+        class: AppBundle\Component\Handler\Builder\HandlerBuilder
+        abstract: true
+        public: false
+
+    app.action.loader.annotated.abstract:
+        class: AppBundle\ServersHandle\Loader\ServiceAnnotatedLoader
+        abstract: true
+        public: false
+        arguments: [ '@annotation_reader' ]
+
+    app.server.abstract:
+        class: AppBundle\ServersHandle\Servers\JsonServerData
+        arguments:
+            - '@twig'
+            - '@doctrine.orm.default_entity_manager'
+            - '@validator'
+            - '@jms_serializer'
